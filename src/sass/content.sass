@@ -45,7 +45,7 @@ input:-moz-placeholder
       position: relative
       p 
          font-weight: 400
-         font-size: 50px
+         font-size: clamp(40px, calc(35.7px + 0.74vw), 50px)
          line-height: 61px
          text-align: center
          letter-spacing: -0.1em
@@ -55,7 +55,8 @@ input:-moz-placeholder
          position: absolute
          top: -13px
          left: 50%
-         margin-left: -50.5px
+         margin: 0
+         transform: translateX(-50%)
    &__head
       background: var(--color-primary)
       padding: 18px 0
@@ -86,7 +87,7 @@ input:-moz-placeholder
          position: relative
          z-index: 1
          font-weight: 400
-         font-size: 30px
+         font-size: clamp(18px, calc(14.1px + 0.85vw), 30px)
          line-height: 41px
          text-align: center
          margin-bottom: 10px
@@ -101,7 +102,7 @@ input:-moz-placeholder
          position: relative
          z-index: 1
          font-weight: 400
-         font-size: 30px
+         font-size: clamp(20px, calc(14.6px + 0.78vw), 30px)
          line-height: 41px
          text-align: center
          letter-spacing: -0.7px
@@ -127,6 +128,8 @@ input:-moz-placeholder
 .calendar 
    padding: var(--spacing-xl) 0
    background: var(--color-primary)
+   position: relative
+   overflow: hidden
    h2 
       margin: 0 auto 35px
       color: var(--color-text-white)
@@ -146,7 +149,7 @@ input:-moz-placeholder
       h3 
          font-weight: 400
          font-family: 'Cormorant Garamond'
-         font-size: 50px
+         font-size: clamp(36px, calc(30px + 1.04vw), 50px)
          line-height: 90%
          text-align: center
          text-transform: uppercase
@@ -154,7 +157,7 @@ input:-moz-placeholder
          margin-top: 0
          margin-bottom: 25px
    &__area 
-      border: 1px solid rgba(95, 136, 14, 0.5)
+      border: 1px solid var(--color-decor)
       border-radius: 34px
       overflow: hidden
       padding: 49px 57px 41px 57px
@@ -207,25 +210,30 @@ input:-moz-placeholder
       z-index: 0
       object-fit: cover 
       object-position: center
+      overflow: hidden
       &_1 
          left: -140px
          top: 220px
          overflow: hidden
          border-radius: 24px
          width: 600px
+         height: 681px
       &_2
          right: -294px
          top: -66px
          width: 1165px
+         max-height: 1239px
          z-index: 2
       &_3
          left: -313px
          bottom: 50px
          width: 397px
+         height: 447px
       &_4
          right: -123px
          width: 333px
          bottom: 293px
+         height: 333px
    &__timer 
       position: absolute
       bottom: -332px
@@ -240,6 +248,7 @@ input:-moz-placeholder
       margin: 94px auto 0
       width: 100%
       max-width: 996px
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
       position: relative
       letter-spacing: -0.8px
       z-index: 4
@@ -253,7 +262,7 @@ input:-moz-placeholder
       span 
          display: block
          font-weight: 400
-         font-size: 80px
+         font-size: clamp(40px, calc(27px + 2.84vw), 80px)
          line-height: 93px
          letter-spacing: -0.06em
          color: var(--color-text-yellow)
@@ -262,7 +271,7 @@ input:-moz-placeholder
       p 
          font-weight: 400
          font-family: 'Inter'
-         font-size: 20px
+         font-size: clamp(16px, calc(14.7px + 0.28vw), 20px)
          line-height: 24px
          text-align: center
          color: var(--color-text-white)
@@ -281,6 +290,8 @@ input:-moz-placeholder
 .personal_greeting
    padding: calc(var(--spacing-2xl) + var(--spacing-sm)) 0
    background: var(--color-primary)
+   position: relative
+   overflow: hidden
    .container 
       position: relative
    h2 
@@ -290,19 +301,19 @@ input:-moz-placeholder
       z-index: 2
    h3
       font-weight: 400
-      font-size: 60px
+      font-size: clamp(23px, calc(8.5px + 2.9vw), 60px)
       line-height: 120%
       text-align: center
       color: var(--color-text-yellow)
       width: 100%
-      max-width: 1100px 
+      max-width: 811px 
       position: relative
       z-index: 2
       margin: 0 auto 42px 
       letter-spacing: -2px
    p 
       font-weight: 500
-      font-size: 24px
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
       line-height: 140%
       text-align: center
       color: #FFFFFF
@@ -312,25 +323,33 @@ input:-moz-placeholder
       position: relative
       z-index: 2
       letter-spacing: -0.7px
+   &__decor
+      display: block
+      color: var(--color-decor)
+      height: auto
+      position: absolute
+   &__decor_1
+      width: 446px
+      z-index: 2
+      width: 446px
+      top: -205px
+      left: -187px
    &__images 
       img 
          object-fit: cover 
          position: absolute
-         z-index: 1
+         z-index: 3
          object-position: center
          &:first-child
             width: 321px
             top: 52px
             left: -217px
+            height: 379px
          &:nth-child(2)
             width: 285px
             top: -107px
             right: -203px
-         &:nth-child(3)
-            z-index: 0
-            width: 446px
-            top: -205px
-            left: -187px
+            height: 352px
          &:nth-child(4)
             width: 519px
             top: -108px
@@ -340,6 +359,8 @@ input:-moz-placeholder
 .wishlist
    padding: var(--spacing-3xl) 0
    background: var(--color-primary)
+   position: relative
+   overflow: hidden
    .container 
       position: relative
    &__btn 
@@ -349,7 +370,7 @@ input:-moz-placeholder
       border-radius: 100px
       margin: 60px auto 0
       font-weight: 600
-      font-size: 20px
+      font-size: clamp(16px, calc(14.2px + 0.3vw), 20px)
       line-height: 100%
       color: var(--color-primary)
       position: relative
@@ -378,7 +399,6 @@ input:-moz-placeholder
       letter-spacing: -2px
    p 
       font-weight: 500
-      font-size: 24px
       line-height: 140%
       text-align: center
       color: #FFFFFF
@@ -388,6 +408,14 @@ input:-moz-placeholder
       position: relative
       z-index: 2
       letter-spacing: -0.7px
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
+   &__fig1 
+      z-index: 0
+      width: 313px
+      top: -110px
+      right: 8px
+      position: absolute
+      z-index: 1
    &__images 
       img 
          object-fit: cover 
@@ -395,18 +423,15 @@ input:-moz-placeholder
          z-index: 1
          object-position: center
          &:first-child
+            height: 374.5px
             width: 321px
             top: 11px
             left: -36px
          &:nth-child(2)
+            height: 352px
             width: 285px
             top: -128px
             right: -195px
-         &:nth-child(3)
-            z-index: 0
-            width: 313px
-            top: -110px
-            right: 8px
          &:nth-child(4)
             width: 519px
             top: -182px
@@ -437,171 +462,29 @@ input:-moz-placeholder
       p 
          color: var(--color-text-brown)
          letter-spacing: -0.05rem
+         font-size: clamp(16px, calc(14px + 0.55vw), 24px)
+         margin: 0
    &__fig1
       position: absolute
       bottom: 96px
       left: -222px
       z-index: 0
       width: 340px
+      height: auto
    &__fig2
       position: absolute
       bottom: 98px
       left: 307px
       z-index: 0
       width: 194px
-.prog 
-   padding: 60px 0 0
-   overflow: hidden
-   .container 
-      position: relative
-   &__content
-      display: none
-      max-height: 523px
-      min-height: 523px
-      overflow-y: auto
-      margin-top: 36px
-      padding-bottom: 60px
-      &.active 
-         display: flex
-         flex-direction: column 
-         gap: 5px
-   .select 
-      position: relative
-      width: max-content
-      margin-bottom: 109px
-      &.active 
-         .select__list 
-            opacity: 1
-            visibility: visible
-            transform: translateY(0)
-      &__current 
-         width: 100%
-         padding: 0 25px
-         display: flex
-         align-items: center
-         justify-content: center
-         cursor: pointer
-         height: 44px
-         background: #ffffff
-         border: none
-         border-radius: 60px
-         font-style: italic
-         font-weight: 400
-         font-size: 18px
-         line-height: 17px
-         font-family: 'Jikharev'
-         color: var(--color-primary)
-         letter-spacing: 0.05rem
-         &:after 
-            content: ""
-            width: 14px
-            height: 8px
-            background: url("../img/arr.svg") center / contain no-repeat
-            transition: .3s
-            margin-left: 12px
-            position: relative
-            top: 1px
-      &__list 
-         position: absolute
-         left: 0
-         right: 0
-         top: calc(100% + 8px)
-         background: #fff
-         border: 1px solid rgba(0,0,0,.15)
-         opacity: 0
-         visibility: hidden
-         transform: translateY(10px)
-         transition: .3s
-         z-index: 30
-         border-radius: 20px
-         overflow: hidden
-      &__item 
-         width: 100%
-         padding: 15px 20px
-         text-align: left
-         background: none
-         border: none
-         cursor: pointer
-         transition: .2s
-         font-weight: 400
-         font-size: 18px
-         line-height: 17px
-         font-family: 'Jikharev'
-         color: var(--color-primary)
-         letter-spacing: 0.05rem
-         &.active 
-            background: var(--color-primary)
-            color: var(--color-text-white)
-   h2 
-      margin-bottom: 38px
-   &__sub 
-      font-size: clamp(16px, calc(14px + 0.7vw), 24px)
-      font-weight: 400
-      color: var(--color-text-black)
-      line-height: 38px
-      width: 100%
-      max-width: 557px
-   &__item 
-      width: 100%
-      max-width: 616px
-      h3 
-         font-size: clamp(24px, calc(21.7px + 0.71vw), 32px)
-         line-height: 100%
-         font-family: 'Jikharev'
-         font-weight: 400
-         color: var(--color-text-black)
-         margin-bottom: 18px
-         width: 100%
-         max-width: 574px
-      p 
-         margin-bottom: 18px
-         font-size: 16px
-         font-weight: 400
-         color: var(--color-text-black)
-         line-height: 28px
-   &__flex 
-      display: flex
-      align-items: center
-      gap: 28px
-      a 
-         font-size: 14px
-         font-weight: 400
-         color: var(--color-primary)
-         border-bottom: 1px solid var(--color-primary)
-         &:hover 
-            color: var(--color-text-black)
-            border-bottom: 1px solid var(--color-text-black)
-      p 
-         font-size: 14px
-         font-weight: 400
-         color: var(--color-primary)
-         border-bottom: 1px solid var(--color-primary)  
-   &__pic 
-      position: absolute
-      bottom: 0px
-      right: -85px
-      z-index: 2
-      height: 100%
-      max-width: 42.35%
-      object-fit: cover 
-      object-position: center
-   &__cloud1
-      position: absolute
-      width: 168px
-      position: absolute
-      top: 59px
-      right: 184px
-   &__cloud2
-      width: 307px
-      position: absolute
-      top: 170px
-      right: -49px
-      z-index: 1
 .faq 
    padding: var(--spacing-md) 0 var(--spacing-sm)
    position: relative
+   overflow: hidden
+   padding-bottom: 0
    &__wrap 
       position: relative
+      padding-bottom: 100px
    &__pic 
       position: absolute
       right: -319px
@@ -612,7 +495,7 @@ input:-moz-placeholder
       position: absolute
       left: 50%
       margin-left: -960px
-      bottom: -109px
+      bottom:  0px
       z-index: 1
       width: 1920px
       height: 199px
@@ -648,10 +531,10 @@ input:-moz-placeholder
          margin-bottom: 0
          padding-bottom: 0
       h3 
-         font-size: 30px
+         font-size: clamp(20px, calc(15.7px + 0.75vw), 30px)
          font-weight: 400
          text-align: center
-         color: #5f880e
+         color: var(--color-primary)
          line-height: 42px
          margin-top: 0
          margin-bottom: 20px
@@ -660,7 +543,7 @@ input:-moz-placeholder
          width: 100%
          max-width: 1013px
          font-weight: 400
-         font-size: 18px
+         font-size: clamp(15px, calc(10px + 0.42vw), 18px)
          line-height: 140%
          text-align: center
          color: var(--color-text-brown)
@@ -700,7 +583,7 @@ input:-moz-placeholder
       cursor: pointer
       padding: 0px 24.6px
       height: 64px
-      border: 1px solid #5F880E
+      border: 1px solid var(--color-primary)
       border-radius: 100px
       display: flex
       align-items: center
@@ -713,7 +596,7 @@ input:-moz-placeholder
          align-items: center
          justify-content: center
          background: transparent
-         font-size: 16px
+         font-size: clamp(14px, calc(13.1px + 0.15vw), 16px)
          font-weight: 500
          text-align: CENTER
          color: var(--color-text-brown)
@@ -830,7 +713,7 @@ input:-moz-placeholder
       padding: 34px
       margin: 0 auto
    &__area 
-      border: 1px solid rgba(95, 136, 14, 0.5)
+      border: 1px solid var(--color-decor)
       border-radius: 10px
       overflow: hidden
       padding: 58px 49px
@@ -847,7 +730,7 @@ input:-moz-placeholder
          border: none
          transition: 0.5s
          font-weight: 500
-         font-size: 20px
+         font-size: clamp(16px, calc(14.2px + 0.3vw), 20px)
          line-height: 100%
          color: var(--color-text-white)
          &:hover 
@@ -889,14 +772,14 @@ input:-moz-placeholder
       &-text
          order: 2
          font-weight: 400
-         font-size: 16px
+         font-size: clamp(14px, calc(13.1px + 0.15vw), 16px)
          line-height: 100%
          color: var(--color-text-brown)
          margin-left: 16px
          letter-spacing: -0.6px
    &__content 
-      justify-content: space-between
-      gap: 19px 0
+      justify-content: center
+      gap: 19px 27px
       flex-wrap: wrap
       display: none
       &.active 
@@ -907,7 +790,7 @@ input:-moz-placeholder
       h3 
          margin-top: 0
          margin-bottom: 29px
-         font-size: 20px
+         font-size: clamp(16px, calc(14.2px + 0.3vw), 20px)
          font-weight: 500
          color: var(--color-text-brown)
          line-height: 20px
@@ -915,7 +798,7 @@ input:-moz-placeholder
          span 
             display: block
             font-weight: 400
-            font-size: 14px
+            font-size: clamp(13px, calc(12.6px + 0.07vw), 14px)
             line-height: 100%
             color: rgba(88, 65, 59, 0.8)
             margin-top: 10px
@@ -933,6 +816,7 @@ input:-moz-placeholder
          textarea 
             min-height: 240px !important
             width: 100% !important
+            font-size: clamp(12px, calc(11.1px + 0.15vw), 14px)
    &__checks
       display: flex
       flex-direction: column
@@ -969,7 +853,7 @@ input:-moz-placeholder
       &-text
          order: 2
          font-weight: 400
-         font-size: 16px
+         font-size: clamp(14px, calc(13.1px + 0.15vw), 16px)
          line-height: 100%
          color: var(--color-text-brown)
          margin-left: 21px
@@ -987,7 +871,7 @@ input:-moz-placeholder
          background: var(--color-text-white)
          border: 1px solid #E3DBC6
          border-radius: 10px
-         font-size: 14px
+         font-size: clamp(12px, calc(11.1px + 0.15vw), 14px)
          line-height: 110%
          &::placeholder
             color: var(--color-text-brown)
@@ -1018,12 +902,13 @@ input:-moz-placeholder
       color: var(--color-text-white)
       margin-bottom: 60px
       letter-spacing: -0.8px
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
    h3 
       margin-top: 0
       margin-bottom: 16px
       font-family: 'Cormorant Garamond'
       font-weight: 400
-      font-size: 60px
+      font-size: clamp(32px, calc(20px + 2.08vw), 60px)
       line-height: 100%
       text-align: center
       letter-spacing: -0.04em
@@ -1043,7 +928,7 @@ input:-moz-placeholder
    text-align: center
    h2 
       font-weight: 400
-      font-size: 100px
+      font-size: clamp(50px, calc(27.4px + 3.73vw), 100px)
       line-height: 100%
       text-align: center
       letter-spacing: -0.88rem
@@ -1057,6 +942,7 @@ input:-moz-placeholder
       letter-spacing: 3.9px
       text-transform: uppercase
       color: var(--color-text-white)
+      font-size: clamp(14px, calc(9.5px + 0.75vw), 24px)
 .map
    padding: var(--spacing-xl) 0
    &__data 
@@ -1080,7 +966,7 @@ input:-moz-placeholder
          border: 1px solid rgba(132, 140, 54, 0.5)
          border-radius: 100px
          font-weight: 500
-         font-size: 20px
+         font-size: clamp(16px, calc(14.7px + 0.28vw), 20px)
          line-height: 100%
          text-align: center
          color: var(--color-primary)
@@ -1100,10 +986,14 @@ input:-moz-placeholder
       top: 50px
       z-index: 2
       width: 330px
+      height: 385px
+      object-position: center
+      object-fit: cover
    &__fig
       position: absolute
       left: -319px
       top: 0px
+      height: auto
       z-index: 0
       width: 495px
    h2 
@@ -1113,7 +1003,7 @@ input:-moz-placeholder
       display: block
       margin-bottom: 8px
       font-weight: 500
-      font-size: 22px
+      font-size: clamp(18px, calc(16.3px + 0.3vw), 22px)
       line-height: 100%
       text-align: center
       color: var(--color-text-yellow)
@@ -1144,14 +1034,14 @@ input:-moz-placeholder
          margin-top: 0
          margin-bottom: 4px
          font-weight: 500
-         font-size: 14px
+         font-size: clamp(13px, calc(12.6px + 0.07vw), 14px)
          line-height: 140%
          text-align: center
          color: var(--color-text-white)
          letter-spacing: -0.5px
       p 
          font-weight: 500
-         font-size: 14px
+         font-size: clamp(13px, calc(12.6px + 0.07vw), 14px)
          line-height: 140%
          text-align: center
          text-decoration-line: underline
@@ -1166,15 +1056,12 @@ input:-moz-placeholder
          height: 49px
          padding: 0
          border: 0
-         background: url("../img/marker.svg") center / contain no-repeat
          cursor: pointer
          img
             display: block
             width: 100%
             height: 100%
       &.active
-         .map-marker__icon
-            background: url("../img/marker-active.svg") center / contain no-repeat
          .map-marker__info 
             display: block
 .site-overlay  
@@ -1204,6 +1091,7 @@ input:-moz-placeholder
       line-height: 144%
       position: relative
       z-index: 2
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
    h2 
       margin: 0  auto 36px
       text-align: center
@@ -1217,7 +1105,7 @@ input:-moz-placeholder
       gap: 76px
       flex-wrap: wrap
       justify-content: center
-      img 
+      svg 
          width: 20.5%
    &__bg 
       width: 1878px
@@ -1234,6 +1122,8 @@ input:-moz-placeholder
       top: 229px
       width: 302px
       z-index: 0
+   &__bg_blue
+      display: none
 .story 
    &__wrap
       padding: var(--spacing-lg) 0
@@ -1299,8 +1189,10 @@ input:-moz-placeholder
          margin-bottom: 46px
          line-height: 88%
       p 
+         margin: 0
          margin-bottom: 41px
          letter-spacing: -0.7px
+         font-size: clamp(16px, calc(14px + 0.55vw), 24px)
    &__arrows 
       position: relative
       display: flex
@@ -1329,10 +1221,12 @@ input:-moz-placeholder
    position: relative
    background: var(--color-primary)
    padding: var(--spacing-3xl) 0 calc(var(--spacing-2xl) + var(--spacing-sm))
+   &__wrap 
+      position: relative
    &__content 
       padding: 34px
    &__area 
-      border: 1px solid rgba(95, 136, 14, 0.5)
+      border: 1px solid var(--color-decor)
       border-radius: 10px
       overflow: hidden
       padding: 65px 40px
@@ -1353,6 +1247,7 @@ input:-moz-placeholder
       max-width: 1188px 
       margin: 0 auto 66px
       letter-spacing: -0.7px
+      font-size: clamp(16px, calc(14px + 0.55vw), 24px)
    &__top 
       width: 1878px
       position: absolute
@@ -1366,6 +1261,7 @@ input:-moz-placeholder
       position: absolute
       right: -450px
       top: 50px
+      height: auto
       z-index: 0
    &__pic 
       position: absolute
@@ -1383,6 +1279,7 @@ input:-moz-placeholder
          position: absolute
          bottom: 197px
          left: -285px
+         height: 494px
       &_3
          width: 400px
          position: absolute
@@ -1393,6 +1290,7 @@ input:-moz-placeholder
          position: absolute
          bottom: 172px
          right: -398px
+         height: 380px
    &__tabs 
       margin-bottom: 32px
       justify-content: center
@@ -1411,7 +1309,7 @@ input:-moz-placeholder
          border: 1px solid var(--color-text-white)
          border-radius: 100px
          font-weight: 500
-         font-size: 24px
+         font-size: clamp(16px, calc(12.6px + 0.61vw), 24px)
          line-height: 100%
          text-align: center
          color: var(--color-text-white)
@@ -1426,15 +1324,22 @@ input:-moz-placeholder
    &__item
       padding-bottom: 23px
       margin-bottom: 23px
+      border-bottom: 1px solid rgba(95,136,14,0.30)
+      &:last-child
+         border: none 
+         margin-bottom: 0
+         padding-bottom: 0
       h3 
          font-weight: 500
-         font-size: 44px
+         font-size: clamp(34px, calc(29.3px + 0.73vw), 44px)
          line-height: 100%
+         color: var(--color-primary)
          letter-spacing: -0.04em
-         margin-bottom: 4px
+         margin: 0 auto 7px
+         text-align: center
       span
          font-weight: 500
-         font-size: 20px
+         font-size: clamp(18px, calc(16.8px + 0.15vw), 20px)
          line-height: 140%
          text-align: center
          color: var(--color-text-brown)
@@ -1443,9 +1348,17 @@ input:-moz-placeholder
          letter-spacing: -0.6px
       p 
          letter-spacing: -1px
+         width: 100%
+         max-width: 1013px
+         font-weight: 400
+         font-size: clamp(15px, calc(10px + 0.42vw), 18px)
+         line-height: 140%
+         text-align: center
+         color: var(--color-text-brown)
+         margin: 0 auto
       a 
          font-weight: 500
-         font-size: 17px
+         font-size: clamp(15px, calc(11.7px + 0.28vw), 17px)
          line-height: 140%
          text-align: center
          color: var(--color-primary)

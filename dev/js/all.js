@@ -380,152 +380,131 @@ function destroyCountdown() {
 // GUEST SWIPER
 // =====================================================
 
+// =====================================================
+// GUEST SWIPER
+// =====================================================
+
 function initGuestSwiper() {
+	const swiperElement = document.querySelector('.guest-select-swiper');
 
-	const swiperElement =
-		document.querySelector(
-			'.guest-select-swiper'
-		);
-
-	if (!swiperElement) return;
+	if (!swiperElement) {
+		return () => {};
+	}
 
 	if (typeof Swiper === 'undefined') {
-
-		console.warn(
-			'Swiper не подключен'
-		);
-
-		return;
-
+		console.warn('Swiper не подключен');
+		return () => {};
 	}
 
-	const forms =
-		document.querySelectorAll(
-			'.guest__content'
-		);
+	// Если компонент инициализируется повторно в SPA —
+	// сначала уничтожаем предыдущий экземпляр
+	if (typeof window.destroyGuestSwiper === 'function') {
+		window.destroyGuestSwiper();
+	}
 
-	const slides =
-		swiperElement.querySelectorAll(
-			'.guest-select-swiper__slide'
-		);
+	const forms = document.querySelectorAll('.guest__content');
+	const slides = swiperElement.querySelectorAll('.guest-select-swiper__slide');
 
-	const nextButton =
-		document.querySelector(
-			'.guest-select-swiper__next'
-		);
+	const nextButton = document.querySelector('.guest-select-swiper__next');
+	const prevButton = document.querySelector('.guest-select-swiper__prev');
 
-	const prevButton =
-		document.querySelector(
-			'.guest-select-swiper__prev'
-		);
+	if (!forms.length || !slides.length) {
+		return () => {};
+	}
 
-	if (!forms.length || !slides.length) return;
+	let guestSwiper = null;
+	let updateTimer = null;
+	let initFrame = null;
+	let destroyed = false;
 
 	function setActiveGuest(index) {
-
-		forms.forEach(
-			(form, formIndex) => {
-
-				form.classList.toggle(
-					'active',
-					formIndex === index
-				);
-
-			}
-		);
-
-		slides.forEach(
-			(slide, slideIndex) => {
-
-				slide.classList.toggle(
-					'active',
-					slideIndex === index
-				);
-
-			}
-		);
-
-	}
-
-	const guestSwiper =
-		new Swiper(swiperElement, {
-
-			slidesPerView: 'auto',
-			spaceBetween: 4,
-			speed: 500,
-			allowTouchMove: true,
-			watchOverflow: true,
-			freeMode: true,
-
-			on: {
-
-				init() {
-
-					setActiveGuest(0);
-
-					requestAnimationFrame(
-						() => {
-							updateArrows();
-						}
-					);
-
-				},
-
-				setTranslate() {
-					updateArrows();
-				},
-
-				resize() {
-					updateArrows();
-				},
-
-				update() {
-					updateArrows();
-				}
-
-			}
-
+		forms.forEach((form, formIndex) => {
+			form.classList.toggle(
+				'active',
+				formIndex === index
+			);
 		});
 
-	slides.forEach((slide, index) => {
-
-		slide.addEventListener(
-			'click',
-			() => {
-
-				setActiveGuest(index);
-
-			}
-		);
-
-	});
+		slides.forEach((slide, slideIndex) => {
+			slide.classList.toggle(
+				'active',
+				slideIndex === index
+			);
+		});
+	}
 
 	function getScrollStep() {
-
 		return Math.max(
 			swiperElement.clientWidth * 0.8,
 			120
 		);
+	}
 
+	function updateArrows() {
+		if (
+			destroyed ||
+			!guestSwiper ||
+			guestSwiper.destroyed
+		) {
+			return;
+		}
+
+		const current = guestSwiper.getTranslate();
+		const min = guestSwiper.minTranslate();
+		const max = guestSwiper.maxTranslate();
+
+		const tolerance = 1;
+
+		const isBeginning =
+			current >= min - tolerance;
+
+		const isEnd =
+			current <= max + tolerance;
+
+		const noOverflow =
+			Math.abs(min - max) <= tolerance;
+
+		if (prevButton) {
+			const disabled =
+				isBeginning || noOverflow;
+
+			prevButton.classList.toggle(
+				'disabled',
+				disabled
+			);
+
+			prevButton.disabled = disabled;
+		}
+
+		if (nextButton) {
+			const disabled =
+				isEnd || noOverflow;
+
+			nextButton.classList.toggle(
+				'disabled',
+				disabled
+			);
+
+			nextButton.disabled = disabled;
+		}
 	}
 
 	function moveSlider(direction) {
+		if (
+			destroyed ||
+			!guestSwiper ||
+			guestSwiper.destroyed
+		) {
+			return;
+		}
 
-		const current =
-			guestSwiper.getTranslate();
-
-		const min =
-			guestSwiper.minTranslate();
-
-		const max =
-			guestSwiper.maxTranslate();
-
-		const step =
-			getScrollStep();
+		const current = guestSwiper.getTranslate();
+		const min = guestSwiper.minTranslate();
+		const max = guestSwiper.maxTranslate();
+		const step = getScrollStep();
 
 		let target =
-			current +
-			direction * step;
+			current + direction * step;
 
 		if (target > min) {
 			target = min;
@@ -542,119 +521,168 @@ function initGuestSwiper() {
 			true
 		);
 
-		setTimeout(() => {
+		if (updateTimer !== null) {
+			clearTimeout(updateTimer);
+		}
+
+		updateTimer = setTimeout(() => {
+			updateTimer = null;
 			updateArrows();
 		}, 520);
-
 	}
 
-	if (nextButton) {
-
-		nextButton.addEventListener(
-			'click',
-			e => {
-
-				e.preventDefault();
-
-				moveSlider(-1);
-
-			}
-		);
-
+	function handleNextClick(e) {
+		e.preventDefault();
+		moveSlider(-1);
 	}
 
-	if (prevButton) {
-
-		prevButton.addEventListener(
-			'click',
-			e => {
-
-				e.preventDefault();
-
-				moveSlider(1);
-
-			}
-		);
-
+	function handlePrevClick(e) {
+		e.preventDefault();
+		moveSlider(1);
 	}
 
-	function updateArrows() {
-
+	function handleResize() {
 		if (
+			destroyed ||
 			!guestSwiper ||
 			guestSwiper.destroyed
 		) {
 			return;
 		}
 
-		const current =
-			guestSwiper.getTranslate();
+		guestSwiper.update();
+		updateArrows();
+	}
 
-		const min =
-			guestSwiper.minTranslate();
+	const slideHandlers = [];
 
-		const max =
-			guestSwiper.maxTranslate();
+	slides.forEach((slide, index) => {
+		const handler = () => {
+			setActiveGuest(index);
+		};
 
-		const tolerance = 1;
+		slide.addEventListener('click', handler);
 
-		const isBeginning =
-			current >=
-			min - tolerance;
+		slideHandlers.push({
+			slide,
+			handler
+		});
+	});
 
-		const isEnd =
-			current <=
-			max + tolerance;
+	if (nextButton) {
+		nextButton.addEventListener(
+			'click',
+			handleNextClick
+		);
+	}
 
-		const noOverflow =
-			Math.abs(min - max) <=
-			tolerance;
-
-		if (prevButton) {
-
-			const disabled =
-				isBeginning ||
-				noOverflow;
-
-			prevButton.classList.toggle(
-				'disabled',
-				disabled
-			);
-
-			prevButton.disabled =
-				disabled;
-
-		}
-
-		if (nextButton) {
-
-			const disabled =
-				isEnd ||
-				noOverflow;
-
-			nextButton.classList.toggle(
-				'disabled',
-				disabled
-			);
-
-			nextButton.disabled =
-				disabled;
-
-		}
-
+	if (prevButton) {
+		prevButton.addEventListener(
+			'click',
+			handlePrevClick
+		);
 	}
 
 	window.addEventListener(
 		'resize',
-		() => {
-
-			guestSwiper.update();
-
-			updateArrows();
-
-		}
+		handleResize
 	);
 
+	guestSwiper = new Swiper(swiperElement, {
+		slidesPerView: 'auto',
+		spaceBetween: 4,
+		speed: 500,
+		allowTouchMove: true,
+		watchOverflow: true,
+		freeMode: true,
+
+		on: {
+			init() {
+				setActiveGuest(0);
+
+				initFrame = requestAnimationFrame(() => {
+					initFrame = null;
+					updateArrows();
+				});
+			},
+
+			setTranslate() {
+				updateArrows();
+			},
+
+			resize() {
+				updateArrows();
+			},
+
+			update() {
+				updateArrows();
+			}
+		}
+	});
+
+	function destroyGuestSwiper() {
+		if (destroyed) {
+			return;
+		}
+
+		destroyed = true;
+
+		window.removeEventListener(
+			'resize',
+			handleResize
+		);
+
+		if (nextButton) {
+			nextButton.removeEventListener(
+				'click',
+				handleNextClick
+			);
+		}
+
+		if (prevButton) {
+			prevButton.removeEventListener(
+				'click',
+				handlePrevClick
+			);
+		}
+
+		slideHandlers.forEach(({ slide, handler }) => {
+			slide.removeEventListener(
+				'click',
+				handler
+			);
+		});
+
+		if (updateTimer !== null) {
+			clearTimeout(updateTimer);
+			updateTimer = null;
+		}
+
+		if (initFrame !== null) {
+			cancelAnimationFrame(initFrame);
+			initFrame = null;
+		}
+
+		if (
+			guestSwiper &&
+			!guestSwiper.destroyed
+		) {
+			guestSwiper.destroy(true, true);
+		}
+
+		guestSwiper = null;
+
+		if (
+			window.destroyGuestSwiper ===
+			destroyGuestSwiper
+		) {
+			delete window.destroyGuestSwiper;
+		}
+	}
+
+	window.destroyGuestSwiper = destroyGuestSwiper;
+
+	return destroyGuestSwiper;
 }
 
 
@@ -878,21 +906,18 @@ async function initMap() {
 	if (!section) return;
 
 	const mapElement =
-		section.querySelector(
-			'#map-canvas'
-		);
+		section.querySelector('#map-canvas');
 
 	const buttons = [
-		...section.querySelectorAll(
-			'.map__tab'
-		)
+		...section.querySelectorAll('.map__tab')
 	];
 
 	const infos = [
-		...section.querySelectorAll(
-			'.map__info'
-		)
+		...section.querySelectorAll('.map__info')
 	];
+
+	const templateContent =
+		document.querySelector('.template-content');
 
 	if (
 		!mapElement ||
@@ -909,7 +934,6 @@ async function initMap() {
 		);
 
 		return;
-
 	}
 
 	await ymaps3.ready;
@@ -932,6 +956,37 @@ async function initMap() {
 				content: info.innerHTML
 			})
 		);
+
+	function getTheme() {
+
+		if (!templateContent) {
+			return 'green';
+		}
+
+		return (
+			templateContent.dataset.theme ||
+			'green'
+		);
+
+	}
+
+	function getMarkerIcon(active = false) {
+
+		const theme = getTheme();
+
+		if (theme === 'blue') {
+
+			return active
+				? 'img/heart-blue-active.svg'
+				: 'img/heart-blue.svg';
+
+		}
+
+		return active
+			? 'img/heart-active.svg'
+			: 'img/heart.svg';
+
+	}
 
 	const map = new YMap(
 		mapElement,
@@ -980,7 +1035,7 @@ async function initMap() {
 
 			markerElement.innerHTML = `
 				<button class="map-marker__icon" type="button">
-					<img src="${index === 0 ? 'img/heart-active.svg' : 'img/heart.svg'}" alt="">
+					<img src="${getMarkerIcon(index === 0)}" alt="">
 				</button>
 
 				<div class="map-marker__info">
@@ -1024,6 +1079,31 @@ async function initMap() {
 		}
 	);
 
+	function updateMarkerIcons() {
+
+		markers.forEach(
+			markerData => {
+
+				const image =
+					markerData.element
+						.querySelector('img');
+
+				if (!image) return;
+
+				const active =
+					markerData.element
+						.classList.contains(
+							'active'
+						);
+
+				image.src =
+					getMarkerIcon(active);
+
+			}
+		);
+
+	}
+
 	function setActiveLocation(index) {
 
 		const location =
@@ -1066,9 +1146,9 @@ async function initMap() {
 				if (image) {
 
 					image.src =
-						active
-							? 'img/heart-active.svg'
-							: 'img/heart.svg';
+						getMarkerIcon(
+							active
+						);
 
 				}
 
@@ -1141,6 +1221,44 @@ async function initMap() {
 		);
 
 	});
+
+	if (templateContent) {
+
+		const themeObserver =
+			new MutationObserver(
+				mutations => {
+
+					mutations.forEach(
+						mutation => {
+
+							if (
+								mutation.type ===
+									'attributes' &&
+								mutation.attributeName ===
+									'data-theme'
+							) {
+
+								updateMarkerIcons();
+
+							}
+
+						}
+					);
+
+				}
+			);
+
+		themeObserver.observe(
+			templateContent,
+			{
+				attributes: true,
+				attributeFilter: [
+					'data-theme'
+				]
+			}
+		);
+
+	}
 
 	setActiveLocation(0);
 

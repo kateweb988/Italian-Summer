@@ -19,8 +19,56 @@
    --spacing-xl: clamp(4rem, 7.3vw, 8.75rem)
    --spacing-2xl: clamp(5rem, 8.5vw, 10.25rem)
    --spacing-3xl: clamp(6rem, 12.3vw, 14.75rem)
-
    --spacing-block: clamp(4rem, 7.5vw, 9rem)
+   --color-primary: #5F880E
+   --color-secondary: #2A65B8
+   --color-text-white: #FFFFFF
+   --color-text-yellow: #FFE940
+   --color-text-brown: #58413B
+   --color-bg: #F9F2D9
+.template-content[data-theme="green"]
+   --color-primary: #5F880E
+   --color-decor: #79A720
+   --color-main: #848C36
+   .dress__bg_green
+      display: block
+   .dress__bg_blue
+      display: none
+   .faq__bg_blue
+      display: none
+.template-content[data-theme="blue"]
+   --color-primary: #2A65B8
+   --color-text-brown: #262626
+   --color-bg: white
+   --color-decor: #518DE3
+   --color-main: #518DE3
+   .guest__check input:checked + .guest__check-box
+      background-color: var(--color-decor)
+      border: 2px solid var(--color-decor)
+      &:before
+         background: url(../img/check2-blue.svg) center / contain no-repeat
+   .dress__bg_green
+      display: none
+   .dress__bg_blue
+      display: block
+   .guest__radio input:checked
+      & + .guest__radio-box
+         background-color: var(--color-decor)
+         border: 2px solid var(--color-decor)
+         &:before
+            background-size: 107% !important
+            background: url("../img/check-blue.svg") center / contain no-repeat
+   .faq__bg_blue
+      display: block
+   .faq__bg_green 
+      display: none
+   .map__tabs button
+      border: 1px solid var(--color-decor)
+   .map__tabs button.active
+      border: 1px solid var(--color-primary)
+      background: var(--color-primary)
+      color: var(--color-text-white) !important
+.template-content
    a
       text-decoration: none
       box-sizing: border-box
@@ -55,15 +103,6 @@
          outline: initial
    div 
       box-sizing: border-box
-p
-   margin: 0
-:root 
-   --color-primary: #5F880E
-   --color-secondary: #2A65B8
-   --color-text-brown: #58413B
-   --color-text-yellow: #FFE940
-   --color-text-white: #FFFFFF
-   --color-bg: #F9F2D9
 .container
    padding: 0 15px
    width: 100%
@@ -81,11 +120,11 @@ p
    text-align: center
    letter-spacing: -0.04em
    text-transform: uppercase
-   color: #5F880E
    width: 100%
    max-width: 634px
    font-family: 'Cormorant Garamond'
    font-weight: 400
+   color: var(--color-primary)
 .title2
    margin: 0
    font-family: 'Cormorant Garamond'
@@ -100,7 +139,7 @@ p
    max-width: 768px
 .icon 
    transition: fill 0.5s, stroke 0.5s
-.prog__content, .timing__tabs, .map__tabs
+.prog__content, .timing__tabs, .map__tabs, .menu ul
    scrollbar-width: thin
    scrollbar-color: transparent transparent
 .btn 

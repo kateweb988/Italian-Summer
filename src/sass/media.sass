@@ -17,6 +17,7 @@
       bottom: 363px
       right: -167px
    .timing__pic_2 
+      height: 448px
       width: 332px
       bottom: 197px
       left: -164px
@@ -24,6 +25,7 @@
       width: 294px
       bottom: 215px
       right: -162px
+      height: 338px
    .story .swiper-gallery
       width: 570px
       height: 616px
@@ -54,7 +56,8 @@
       width: 263px
       top: -128px
       right: -85px
-   .wishlist__images img:nth-child(3)
+      height: 325px
+   .wishlist__fig1
       width: 266px
       top: -110px
       right: 91px
@@ -63,9 +66,12 @@
       top: 79px
       width: 470px
    .map__pic 
+      height: 336px
       right: -134px
       top: 84px
       width: 288px
+   .timing__wrap
+      padding-top: 60px
 @media screen and (max-width: 1350px)
    .personal_greeting h3
       max-width: 859px
@@ -75,11 +81,13 @@
       width: 213px
       top: -85px
       right: -16px
+      height: 263px
    .personal_greeting__images img:first-child 
       width: 254px
       top: 140px
       left: -63px
-   .personal_greeting__images img:nth-child(3) 
+      height: 300px
+   .personal_greeting__decor_1
       z-index: 0
       width: 388px
       top: -146px
@@ -93,6 +101,7 @@
       top: 265px
       border-radius: 24px
       width: 518px
+      height: 588px
    .about__pic 
       right: -45px
       width: 56%
@@ -106,8 +115,6 @@
       margin-left: -895px
       height: 107px
       top: 40px
-   .personal_greeting h3
-      font-size: 53px
    .personal_greeting p
       max-width: 817px
    .timing__pic_1 
@@ -115,6 +122,7 @@
       bottom: 153px
       left: -189px
    .timing__pic_2 
+      height: 375px
       width: 278px
       bottom: 197px
       left: -47px
@@ -123,6 +131,7 @@
       bottom: 380px
       right: -127px
    .timing__pic_4 
+      height: 306.3px
       width: 266px
       bottom: 215px
       right: -75px
@@ -167,7 +176,6 @@
    .guest .guest-select-swiper
       padding-bottom: 1px
    .guest__item h3
-      font-size: 18px
       line-height: 18px
    .wishlist
       overflow: hidden
@@ -176,11 +184,7 @@
          max-width: 79% 
          margin: 0 auto
          width: 100%
-   .timing
-      .timing__item h3
-         font-size: 38px
    .faq__item h3 
-      font-size: 26px
       text-align: center
       line-height: 37px 
    .faq__pic 
@@ -197,6 +201,7 @@
       right: -65px
       top: 108px
       width: 247px
+      height: 288px
    .map__canvas #map-canvas
       max-width: 1000px
       margin: 0 auto
@@ -227,13 +232,15 @@
          display: flex
          flex-direction: column 
          text-align: center
-         gap: 25px
+         gap: 20px
          position: relative
          z-index: 2
+         overflow-y: auto
+         max-height: 417px
+         overflow-x: hidden
          li 
             a
                font-weight: 500
-               font-size: 17px
                line-height: 23px
                text-align: center
                color: var(--color-text-white)
@@ -261,8 +268,6 @@
          height: 100vh
    .personal_greeting__images img:nth-child(1)
       display: none
-   .personal_greeting h3
-      font-size: 45px
    .personal_greeting__images img:nth-child(2)
       width: 295px
       top: 0
@@ -270,12 +275,13 @@
       position: relative
       margin: 0 auto 60px
       display: block
+      height: 365px
    .personal_greeting__images img:nth-child(4) 
       width: 505px
       top: initial
       margin-right: -265px
       bottom: -67px
-   .personal_greeting__images img:nth-child(3) 
+   .personal_greeting__decor_1
       z-index: 0
       width: 388px
       top: -111px
@@ -292,6 +298,7 @@
       top: 271px
       border-radius: 24px
       width: 422px
+      height: 478px
    .calendar__sub
       margin-top: 60px
    .about__wrap
@@ -335,8 +342,6 @@
    .timing__tabs
       overflow-x: auto
       overflow-y: visible
-   .timing__tabs button
-      font-size: 21px
    .timing__content
       max-width: 100%
    .timing 
@@ -355,6 +360,7 @@
    .timing__pic_2
       display: none
    .timing__pic_4 
+      height: 368px
       width: 324px
       bottom: -39px
       right: 200px
@@ -367,12 +373,7 @@
       top: initial
       z-index: 0
       left: 117px
-   .timing__item span
-      font-size: 18px
-   .faq__item p
-      font-size: 15px
    .timing__item a
-      font-size: 15px
       letter-spacing: 0
    .story__wrap
       flex-direction: column-reverse
@@ -423,11 +424,12 @@
       position: relative
       display: block
       margin: 0 auto 40px
+      height: 368px
    .wishlist__images img:nth-child(4) 
       width: 512px
       top: 68px
       margin-right: -263px
-   .wishlist__images img:nth-child(3) 
+   .wishlist__fig1
       width: 300px
       top: -72px
       right: 0
@@ -435,16 +437,16 @@
       max-width: 100%
    .faq__pic 
       right: initial
-      top: -162px
+      top: -159px
       width: 378px
       z-index: 1
-      left: -77px
-      transform: rotate(161deg) !important
+      left: -152px
+      transform: rotate(129deg) !important
    .faq__fig 
       position: absolute
       left: 50%
       margin-left: -580px
-      bottom: -88px
+      bottom: 0px
       z-index: 1
       width: 1160px
       height: 117px
@@ -457,10 +459,8 @@
    .contact p
       letter-spacing: 0
    .contact a
-      font-size: 20px
       letter-spacing: 0
    .contact h3
-      font-size: 45px
       letter-spacing: 0
    .contact p 
       letter-spacing: 0
@@ -468,11 +468,8 @@
       max-width: 700px
       margin: 0 auto 40px
    .footer h2
-      font-size: 70px
       letter-spacing: 0.3px
       margin-top: 20px
-   .footer p
-      font-size: 18px
    .map h2
       margin-bottom: 30px
    .map__wrap
@@ -488,6 +485,14 @@
       width: 312px
       transform: rotate(181deg) !important
       top: -52px
+   .guest__content
+      gap: 19px 4px
+   .faq .faq__wrap
+      padding-bottom: 70px
+   .contact__wrap
+      padding-top: 0
+   .timing__wrap
+      padding-bottom: 230px
 @media ( max-width: 991px )
    input, textarea, select
       -webkit-appearance: none
@@ -497,15 +502,9 @@
       width: 100%
    .main__wrap
       padding-top: 230px
-   .main__content p
-      font-size: 24px
-   .main__content span
-      font-size: 21px
    .personal_greeting h3
-      font-size: 39px
       margin-top: 3px
    .personal_greeting p
-      font-size: 21px
       letter-spacing: 0
       width: 100%
       max-width: 80%
@@ -513,10 +512,7 @@
       position: relative
       z-index: 2
    .timer__item span
-      font-size: 60px
       line-height: 120%
-   .timer__item p
-      font-size: 18px
    .timer__item:after
       top: 6px
    .calendar__pic_1 
@@ -524,6 +520,7 @@
       top: 352px
       border-radius: 24px
       width: 310px
+      height: 352px
    .calendar__pic_3
       display: none
    .calendar__pic_2 
@@ -531,9 +528,9 @@
       top: 140px
       width: 846px
       z-index: 2
+      max-height: 900px
    .calendar__sub 
       line-height: 139%
-      font-size: 21px
       margin-top: 40px
       max-width: 75%
    .about__content
@@ -548,10 +545,8 @@
       letter-spacing: 0
       max-width: 68%
       margin: 0px auto 50px
-      font-size: 21px
       line-height: 129%
    .about__content p
-      font-size: 21px
       line-height: 139%
       max-width: 80% 
       margin: 0 auto
@@ -560,7 +555,6 @@
    .timing__tabs button
       height: 60px
       padding: 0 20px 
-      font-size: 18px
    .timing__item span
       margin-bottom: 10px
    .timing__area
@@ -595,7 +589,6 @@
                fill: var(--color-primary)
    .story__content p 
       letter-spacing: 0
-      font-size: 21px
       max-width: 80%
       margin: 0 auto
       line-height: 139%
@@ -615,7 +608,6 @@
    .dress
       padding-top: 90px
    .dress__sub
-      font-size: 21px
       max-width: 80%
       margin: 0 auto 30px
       line-height: 139%
@@ -626,7 +618,6 @@
    .guest__wrap
       padding: 20px
    .guest .guest-select-swiper__slide
-      font-size: 18px
       padding: 0 20px
       height: 60px
    .guest__area
@@ -649,28 +640,23 @@
       width: 100%
       max-width: 100%
       height: 60px
-      font-size: 17px
    .wishlist p
-      font-size: 21px
       max-width: 80%
       margin: 0 auto
       line-height: 139%
    .wishlist__btn
       width: 100%
       height: 60px
-      font-size: 17px
       margin-top: 30px
    #faq .faq__content
       padding: 30px
    .faq__item h3
-      font-size: 23px
       line-height: 120%
    .faq h2
       max-width: 60%
    h2 
       letter-spacing: -0.5px !important
    .contact p 
-      font-size: 21px
       letter-spacing: 0
       width: 100%
       max-width: 80%
@@ -679,9 +665,10 @@
    .map__tabs button
       height: 60px
       padding: 0 20px
-      font-size: 18px
    .timer
       margin-bottom: 40px
+   .timing__wrap
+      padding-top: 90px
 @media screen and (max-width: 767px)
    .main__area
       height: 623px
@@ -692,7 +679,6 @@
       margin: 8px auto 30px
    .personal_greeting h3 
       letter-spacing: 0
-      font-size: 28px
       margin-top: 6px
       margin-bottom: 30px
    .timer
@@ -702,6 +688,7 @@
       top: 255px
       border-radius: 24px
       width: 362px
+      height: 411px
    .calendar__pic_2 
       right: -149px
       top: 18px
@@ -734,8 +721,6 @@
       outline: none
    .main__row p
       top: -10px
-      margin-left: -41.5px
-      font-size: 40px
    .main__head 
       padding: 5px 0
    .main__btn
@@ -753,11 +738,10 @@
    .main__wrap
       padding-top: 293px
    .main__area
-      height: 435px
+      height: 439px
    .main__content p
       margin-bottom: 14px
       line-height: 100%
-      font-size: 18px
       letter-spacing: -0.5px
    .main__content 
       padding: 47px 29px 53px
@@ -766,7 +750,6 @@
       height: 130px
       margin: 8px auto 34px
    .main__content span
-      font-size: 20px
       letter-spacing: -0.1px
       line-height: 100%
    .main__content h1
@@ -784,16 +767,16 @@
    .personal_greeting__images img:nth-child(2)
       width: 169px
       margin-bottom: 48px
+      height: 209px
    .personal_greeting
       padding-top: 49px
-   .personal_greeting__images img:nth-child(3) 
+   .personal_greeting__decor_1
       width: 236px
       top: -69px
       right: -88px
       transform: rotate(125deg) !important
    .personal_greeting h3 
       letter-spacing: 0
-      font-size: 23px
       line-height: 120%
       margin-top: 3px
       margin-bottom: 25px
@@ -807,7 +790,6 @@
       padding-bottom: 51px
    .timer__item span
       margin-bottom: 5px
-      font-size: 40px
       line-height: 100%
    .timer
       gap: 30px
@@ -815,7 +797,6 @@
    .calendar h2
       margin-bottom: 27px
    .timer__item p
-      font-size: 16px
       line-height: 100%
    .timer__item:after 
       top: -12px
@@ -825,16 +806,19 @@
       top: 239px
       border-radius: 24px
       width: 223px
+      height: 253px
    .calendar__pic_2 
       right: -91px
       top: 131px
       width: 581px
       z-index: 2
+      max-height: 617px
    .calendar__pic_4 
       top: 333px
       right: -93px
       width: 205px
       bottom: initial
+      height: 205px
    .calendar__box
       padding: 13px
       border-radius: 28px
@@ -844,7 +828,6 @@
    .calendar__box h3
       margin-bottom: 24px
       letter-spacing: 1px
-      font-size: 36px
       line-height: 90%
    .calendar__head div, .calendar__day
       font-size: 13px
@@ -864,7 +847,6 @@
       max-width: 225.4px
       margin: 0 auto 24px
    .calendar__sub
-      font-size: 16px
       line-height: 140%
       max-width: 330px
       margin-top: 23px
@@ -889,7 +871,6 @@
       line-height: 100%
       height: 48px
       padding: 0 14px
-      font-size: 16px
    .timing__tabs
       margin-bottom: 25px
    .timing__sub
@@ -903,13 +884,11 @@
    .timing h2
       margin-bottom: 14px
    .timing .timing__item h3
-      font-size: 34px
       line-height: 100%
    .timing__item span
       margin-bottom: 6px
-      font-size: 18px
       line-height: 140%
-   .faq__item p
+   .faq__item p, .timing__item p
       letter-spacing: -0.5px
    .timing__area 
       padding: 29px 14px
@@ -921,6 +900,7 @@
    .timing .faq__wrap
       padding-bottom: 128px
    .timing__pic_4 
+      height: 260px
       width: 216px
       bottom: -56px
       right: 26px
@@ -948,7 +928,6 @@
    .story
       padding-top: 5px
    .personal_greeting p, .about__content p, .timing__sub, .story__content p, .dress__sub, .wishlist p, .contact p
-      font-size: 16px
       line-height: 140% 
       width: 100%
       letter-spacing: -0.4px
@@ -968,7 +947,7 @@
       padding-bottom: 201px
    .story__pic_1 
       left: -64px
-      bottom: -50px
+      bottom: -144px
       transform: rotate(261deg)
       width: 250px
    .dress
@@ -992,12 +971,9 @@
       line-height: 100%
       height: 48px
       padding: 0 10px
-      button
-         font-size: 14px
    .guest .guest-select-swiper
       margin-bottom: 15px
    .guest__item h3 
-      font-size: 16px
       line-height: 100%
       margin-bottom: 18px
    .guest__radios
@@ -1005,22 +981,17 @@
    .guest__radio-text
       margin-left: 13px
    .guest__item h3 span
-      font-size: 13px
       line-height: 100%
    .guest__input
       height: 50px
    .guest__item
       padding-bottom: 6px
-   .guest__radio-text
-      font-size: 14px
    .guest__check-text 
-      font-size: 14px
       margin-left: 13px
    .guest__field textarea, .guest__item_7 textarea
       width: 100%
       min-height: 140px !important
       padding: 15px 20px 0 15px
-      font-size: 12px
    .guest__item_6
       padding-bottom: 0
       margin-bottom: 0px
@@ -1030,9 +1001,9 @@
    .guest__form_btn 
       margin-top: 4px
       height: 56px
-      font-size: 16px
    .wishlist__images img:nth-child(2)
       width: 146px
+      height: 180px
       margin-bottom: 23px
    .wishlist
       padding-bottom: 35px
@@ -1040,9 +1011,8 @@
    .wishlist__btn 
       width: 252px
       height: 56px
-      font-size: 16px
       margin-top: 20px
-   .wishlist__images img:nth-child(3) 
+   .wishlist__fig1
       z-index: 2
       width: 193px
       top: 0
@@ -1053,13 +1023,13 @@
       margin-right: -150px
    .faq .faq__wrap
       padding-top: 0
+      padding-bottom: 70px
    .faq h2
       max-width: 100%
       margin-bottom: 28px
    .faq__item h3
       width: 100%
       max-width: 276px
-      font-size: 20px
       margin: 0 auto 13px
    #faq .faq__content 
       padding: 25px 20px
@@ -1074,12 +1044,11 @@
       height: 117px
       width: 1130px
       margin-left: -565px
-      bottom: -48px
+      bottom: 0px
    .contact__wrap
       padding-top: 0
    .contact h3
       margin-bottom: 13px
-      font-size: 32px
       line-height: 100%
    .contact
       padding-bottom: 48px
@@ -1093,6 +1062,7 @@
       right: 50%
       top: -44px
       width: 154px
+      height: 180px
       margin-right: -39px
    .map__fig 
       left: 50%
@@ -1109,25 +1079,28 @@
       height: 48px
       white-space: nowrap
       padding: 0 14px
-      font-size: 16px
    .map h2
       margin-bottom: 25px
    .map__name
-      font-size: 18px
       line-height: 100%
-   .map .map-marker__info h3
-      font-size: 13px
-   .map .map-marker__info p
-      font-size: 13px
    .map .map-marker__info
       width: 258px
    .footer h2
       margin: 9px 0 15px
-      font-size: 50px
       line-height: 100%
    .footer p
-      font-size: 14px
       line-height: 100%
       letter-spacing: 2.2px
+   .main__content h1
+      max-width: 299px
    // .main__bg
    //    object-position: 43% 0px
+@media screen and (max-width: 440px)
+   .main__content h1
+      max-width: 271px
+@media screen and (max-width: 380px) and (max-height: 650px)
+   .menu__bg 
+      bottom: -113px
+      left: -120px
+      width: 138%
+      max-height: 47%
