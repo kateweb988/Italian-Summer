@@ -707,18 +707,6 @@
    .timing__sub
       max-width: 90%
 @media screen and (max-width: 576px)
-   button:active, button:focus 
-      outline: none
-   button::-moz-focus-inner 
-      border: 0
-   a:active, a:focus
-      outline: none
-   input, textarea
-      outline: none
-   input:active, textarea:active
-      outline: none
-   input:focusout
-      outline: none
    .main__row p
       top: -10px
    .main__head 
@@ -1093,6 +1081,17 @@
       letter-spacing: 2.2px
    .main__content h1
       max-width: 299px
+   .menu
+      overflow-y: auto
+      ul
+         max-height: 100%
+   .menu__bg 
+      bottom: -74px
+      left: -97px
+      width: 138%
+      max-height: 47%
+      position: relative
+
    // .main__bg
    //    object-position: 43% 0px
 @media screen and (max-width: 440px)
@@ -1100,7 +1099,7 @@
       max-width: 271px
 @media screen and (max-width: 380px) and (max-height: 650px)
    .menu__bg 
-      bottom: -113px
-      left: -120px
+      bottom: -28px
+      left: -93px
       width: 138%
       max-height: 47%

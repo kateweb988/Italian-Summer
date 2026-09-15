@@ -2761,24 +2761,6 @@ input:-moz-placeholder {
   }
 }
 @media screen and (max-width: 576px) {
-  button:active, button:focus {
-    outline: none;
-  }
-  button::-moz-focus-inner {
-    border: 0;
-  }
-  a:active, a:focus {
-    outline: none;
-  }
-  input, textarea {
-    outline: none;
-  }
-  input:active, textarea:active {
-    outline: none;
-  }
-  input:focusout {
-    outline: none;
-  }
   .main__row p {
     top: -10px;
   }
@@ -3269,6 +3251,19 @@ input:-moz-placeholder {
   .main__content h1 {
     max-width: 299px;
   }
+  .menu {
+    overflow-y: auto;
+  }
+  .menu ul {
+    max-height: 100%;
+  }
+  .menu__bg {
+    bottom: -74px;
+    left: -97px;
+    width: 138%;
+    max-height: 47%;
+    position: relative;
+  }
 }
 @media screen and (max-width: 440px) {
   .main__content h1 {
@@ -3277,8 +3272,8 @@ input:-moz-placeholder {
 }
 @media screen and (max-width: 380px) and (max-height: 650px) {
   .menu__bg {
-    bottom: -113px;
-    left: -120px;
+    bottom: -28px;
+    left: -93px;
     width: 138%;
     max-height: 47%;
   }
